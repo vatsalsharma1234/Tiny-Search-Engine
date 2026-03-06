@@ -1,35 +1,34 @@
-Tiny Search Engine (Inverted Index + Ranking)
+Tiny Search Engine
 
-A lightweight Search Engine implemented using core Data Structures and Algorithms.
-This project demonstrates how search systems index documents and retrieve relevant results efficiently using an Inverted Index.
+A simple Search Engine implementation using an Inverted Index, built to demonstrate core Data Structures and Algorithms concepts used in modern search systems.
 
-The system processes a collection of documents, builds an index mapping words → documents, and supports fast search queries with simple frequency-based ranking.
+The project indexes a collection of documents and allows users to perform fast keyword-based searches with basic relevance ranking.
 
-This project simulates the fundamental concepts used in large-scale search systems such as Google Search.
+Overview
+
+Search engines must retrieve relevant information quickly from large datasets.
+Instead of scanning every document during a search, this project builds an inverted index that maps words to the documents that contain them.
+
+When a user searches for a keyword, the system directly retrieves the relevant documents from the index, making the search much faster.
 
 Features
 
-Builds an Inverted Index for fast search
+Document indexing
 
-Supports keyword-based queries
+Fast keyword search
 
-Returns documents ranked by word frequency
+Inverted index implementation
 
-Efficient lookup using Hash Maps
+Frequency-based result ranking
 
-Handles multiple documents and queries
+Efficient search using hash maps
 
-Demonstrates real-world information retrieval concepts
+How It Works
+1. Document Indexing
 
-System Design Overview
+Each document is processed and broken into individual words.
 
-The search engine works in two phases:
-
-1. Indexing Phase
-
-Documents are processed and broken into individual words.
-
-Each word is stored in an inverted index structure:
+An inverted index is created:
 
 word → list of documents containing that word
 
@@ -38,20 +37,17 @@ Example:
 data → doc1, doc3
 algorithms → doc1, doc3
 search → doc2
+2. Query Processing
 
-This allows very fast lookups during search.
+When a user searches for a word:
 
-2. Query Phase
+The word is looked up in the index.
 
-When a user enters a search query:
+Relevant documents are retrieved.
 
-The system looks up the word in the index.
+Documents are ranked based on word frequency.
 
-Retrieves all documents containing the word.
-
-Ranks them by frequency of occurrence.
-
-Returns the most relevant results.
+Results are returned.
 
 Example
 
@@ -61,24 +57,36 @@ doc1: data structures and algorithms
 doc2: search engine using inverted index
 doc3: algorithms and data science
 
-Query:
+Search query:
 
-search: algorithms
+algorithms
 
-Output:
+Result:
 
-doc1 (1)
-doc3 (1)
+doc1
+doc3
+Tech Stack
+
+C++
+
+STL (unordered_map, vector, string)
+
+Basic text processing
+
 Data Structures Used
-Data Structure	Purpose
-Hash Map	Store inverted index
-Vector / List	Store document IDs
-String Processing	Tokenize documents
-Sorting	Rank results
+
+Hash Map
+
+Vector
+
+String processing
+
+Sorting algorithms
+
 Time Complexity
 Operation	Complexity
-Indexing Documents	O(N × W)
-Search Query	O(K log K)
+Indexing	O(N × W)
+Search	O(K log K)
 
 Where:
 
@@ -86,6 +94,4 @@ N = number of documents
 
 W = average words per document
 
-K = number of documents containing the query term
-
-Using an inverted index reduces search time dramatically compared to scanning every document.
+K = number of documents containing the query word
